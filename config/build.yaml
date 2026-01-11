@@ -3,3 +3,5 @@ include:
     shield: iurii_left
   - board: promicro_nrf52840
     shield: iurii_right
+  - board: promicro_nrf52840
+    shield: iurii_test
