@@ -1,15 +1,5 @@
 #include "iurii.dtsi"
 
-/ {
-    chosen {
-        zmk,split = &split;
-    };
-
-    split: split {
-        compatible = "zmk,split";
-    };
-};
-
 &kscan0 {
     col-gpios
         = <&gpio0 31 GPIO_ACTIVE_HIGH>

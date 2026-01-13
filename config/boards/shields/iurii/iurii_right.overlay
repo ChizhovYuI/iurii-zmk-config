@@ -1,16 +1,5 @@
 #include "iurii.dtsi"
 
-/ {
-    chosen {
-        zmk,split = &split;
-    };
-
-    split: split {
-        compatible = "zmk,split";
-        role = "peripheral";
-    };
-};
-
 &default_transform {
     col-offset = <5>;
 };

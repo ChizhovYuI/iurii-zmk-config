@@ -8,13 +8,6 @@ config ZMK_SPLIT_ROLE_CENTRAL
 
 endif
 
-if SHIELD_IURII_RIGHT
-
-config ZMK_KEYBOARD_NAME
-    default "Iurii"
-
-endif
-
 if SHIELD_IURII_LEFT || SHIELD_IURII_RIGHT
 
 config ZMK_SPLIT
