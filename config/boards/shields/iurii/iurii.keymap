@@ -3,53 +3,142 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/reset.h>
 
-#define DEFAULT 0
-#define LOWER   1
-#define RAISE   2
+#define BASE 0
+#define NAV  1
+#define NUM  2
+#define SYM  3
+#define FUN  4
 
 / {
+    behaviors {
+        // Home-row mods with balanced flavor
+        hm: homerow_mods {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <150>;
+            flavor = "balanced";
+            bindings = <&kp>, <&kp>;
+        };
+
+        // Layer-tap for thumb keys
+        lt: layer_tap {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <175>;
+            flavor = "balanced";
+            bindings = <&mo>, <&kp>;
+        };
+    };
+
+    combos {
+        compatible = "zmk,combos";
+
+        // J+K = ESC (Vim exit insert mode)
+        combo_esc {
+            timeout-ms = <50>;
+            key-positions = <16 17>;
+            bindings = <&kp ESC>;
+            layers = <BASE>;
+        };
+
+        // D+F = Underscore (Python snake_case)
+        combo_under {
+            timeout-ms = <50>;
+            key-positions = <12 13>;
+            bindings = <&kp UNDER>;
+            layers = <BASE>;
+        };
+
+        // K+L = Colon (Python)
+        combo_colon {
+            timeout-ms = <50>;
+            key-positions = <17 18>;
+            bindings = <&kp COLON>;
+            layers = <BASE>;
+        };
+
+        // Q+P = Caps Word (CONSTANT_NAMES)
+        combo_caps {
+            timeout-ms = <50>;
+            key-positions = <0 9>;
+            bindings = <&caps_word>;
+            layers = <BASE>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
-        default_layer {
+        base_layer {
             bindings = <
-// ╭──────┬──────┬──────┬──────┬──────╮   ╭──────┬──────┬──────┬──────┬──────╮
-    &kp Q  &kp W  &kp E  &kp R  &kp T      &kp Y  &kp U  &kp I  &kp O  &kp P
-// ├──────┼──────┼──────┼──────┼──────┤   ├──────┼──────┼──────┼──────┼──────┤
-    &kp A  &kp S  &kp D  &kp F  &kp G      &kp H  &kp J  &kp K  &kp L  &kp SEMI
-// ├──────┼──────┼──────┼──────┼──────┤   ├──────┼──────┼──────┼──────┼──────┤
-    &kp Z  &kp X  &kp C  &kp V  &kp B      &kp N  &kp M  &kp COMMA &kp DOT &kp FSLH
-// ├──────┼──────┼──────┼──────┼──────┤   ├──────┼──────┼──────┼──────┼──────┤
-    &kp SPACE &kp LGUI &kp LALT &mo LOWER &kp LSHFT    &kp BSPC &kp RET &mo RAISE &kp RSHFT &kp RCTRL
-// ╰──────┴──────┴──────┴──────┴──────╯   ╰──────┴──────┴──────┴──────┴──────╯
+// ╭────────────┬────────────┬────────────┬────────────┬────────────╮   ╭────────────┬────────────┬────────────┬────────────┬────────────╮
+    &kp Q        &kp W        &kp E        &kp R        &kp T            &kp Y        &kp U        &kp I        &kp O        &kp P
+// ├────────────┼────────────┼────────────┼────────────┼────────────┤   ├────────────┼────────────┼────────────┼────────────┼────────────┤
+    &hm LCTRL A  &hm LALT S   &hm LGUI D   &hm LSHFT F  &kp G            &kp H        &hm RSHFT J  &hm RGUI K   &hm RALT L   &hm RCTRL SEMI
+// ├────────────┼────────────┼────────────┼────────────┼────────────┤   ├────────────┼────────────┼────────────┼────────────┼────────────┤
+    &kp Z        &kp X        &kp C        &kp V        &kp B            &kp N        &kp M        &kp COMMA    &kp DOT      &kp FSLH
+// ├────────────┼────────────┼────────────┼────────────┼────────────┤   ├────────────┼────────────┼────────────┼────────────┼────────────┤
+    &lt NAV SPACE &kp TAB     &kp ESC      &mo SYM      &kp LSHFT        &lt NUM BSPC &lt SYM RET  &kp F13      &kp RSHFT    &kp RCTRL
+// ╰────────────┴────────────┴────────────┴────────────┴────────────╯   ╰────────────┴────────────┴────────────┴────────────┴────────────╯
             >;
         };
 
-        lower_layer {
+        nav_layer {
             bindings = <
-// ╭──────┬──────┬──────┬──────┬──────╮   ╭──────┬──────┬──────┬──────┬──────╮
-    &kp N1 &kp N2 &kp N3 &kp N4 &kp N5     &kp N6 &kp N7 &kp N8 &kp N9 &kp N0
-// ├──────┼──────┼──────┼──────┼──────┤   ├──────┼──────┼──────┼──────┼──────┤
-    &kp TAB &kp ESC &trans &trans &trans   &kp LEFT &kp DOWN &kp UP &kp RIGHT &kp SQT
-// ├──────┼──────┼──────┼──────┼──────┤   ├──────┼──────┼──────┼──────┼──────┤
-    &kp LCTRL &trans &trans &trans &bootloader   &kp MINUS &kp EQUAL &kp LBKT &kp RBKT &kp BSLH
-// ├──────┼──────┼──────┼──────┼──────┤   ├──────┼──────┼──────┼──────┼──────┤
-    &trans &trans &trans &trans &trans     &kp DEL &kp GRAVE &trans &trans &sys_reset
-// ╰──────┴──────┴──────┴──────┴──────╯   ╰──────┴──────┴──────┴──────┴──────╯
+// ╭────────────┬────────────┬────────────┬────────────┬────────────╮   ╭────────────┬────────────┬────────────┬────────────┬────────────╮
+    &trans       &trans       &trans       &trans       &trans           &kp LG(LS(Z)) &kp LG(V)   &kp LG(C)    &kp LG(X)    &kp LG(Z)
+// ├────────────┼────────────┼────────────┼────────────┼────────────┤   ├────────────┼────────────┼────────────┼────────────┼────────────┤
+    &kp LCTRL    &kp LALT     &kp LGUI     &kp LSHFT    &trans           &kp LEFT     &kp DOWN     &kp UP       &kp RIGHT    &kp DEL
+// ├────────────┼────────────┼────────────┼────────────┼────────────┤   ├────────────┼────────────┼────────────┼────────────┼────────────┤
+    &trans       &trans       &trans       &trans       &trans           &kp HOME     &kp PG_DN    &kp PG_UP    &kp END      &kp INS
+// ├────────────┼────────────┼────────────┼────────────┼────────────┤   ├────────────┼────────────┼────────────┼────────────┼────────────┤
+    &trans       &trans       &trans       &mo FUN      &trans           &trans       &trans       &trans       &trans       &trans
+// ╰────────────┴────────────┴────────────┴────────────┴────────────╯   ╰────────────┴────────────┴────────────┴────────────┴────────────╯
             >;
         };
 
-        raise_layer {
+        num_layer {
             bindings = <
-// ╭──────┬──────┬──────┬──────┬──────╮   ╭──────┬──────┬──────┬──────┬──────╮
-    &kp F1 &kp F2 &kp F3 &kp F4 &kp F5     &kp F6 &kp F7 &kp F8 &kp F9 &kp F10
-// ├──────┼──────┼──────┼──────┼──────┤   ├──────┼──────┼──────┼──────┼──────┤
-    &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_CLR &trans   &kp HOME &kp PG_DN &kp PG_UP &kp END &kp F11
-// ├──────┼──────┼──────┼──────┼──────┤   ├──────┼──────┼──────┼──────┼──────┤
-    &trans &trans &trans &trans &bootloader   &trans &trans &trans &trans &kp F12
-// ├──────┼──────┼──────┼──────┼──────┤   ├──────┼──────┼──────┼──────┼──────┤
-    &trans &trans &trans &trans &trans     &trans &trans &trans &trans &sys_reset
-// ╰──────┴──────┴──────┴──────┴──────╯   ╰──────┴──────┴──────┴──────┴──────╯
+// ╭────────────┬────────────┬────────────┬────────────┬────────────╮   ╭────────────┬────────────┬────────────┬────────────┬────────────╮
+    &kp LBKT     &kp N7       &kp N8       &kp N9       &kp RBKT         &trans       &trans       &trans       &trans       &trans
+// ├────────────┼────────────┼────────────┼────────────┼────────────┤   ├────────────┼────────────┼────────────┼────────────┼────────────┤
+    &kp SEMI     &kp N4       &kp N5       &kp N6       &kp EQUAL        &trans       &kp RSHFT    &kp RGUI     &kp RALT     &kp RCTRL
+// ├────────────┼────────────┼────────────┼────────────┼────────────┤   ├────────────┼────────────┼────────────┼────────────┼────────────┤
+    &kp GRAVE    &kp N1       &kp N2       &kp N3       &kp BSLH         &trans       &trans       &trans       &trans       &trans
+// ├────────────┼────────────┼────────────┼────────────┼────────────┤   ├────────────┼────────────┼────────────┼────────────┼────────────┤
+    &kp DOT      &kp N0       &kp MINUS    &mo FUN      &trans           &trans       &trans       &trans       &trans       &trans
+// ╰────────────┴────────────┴────────────┴────────────┴────────────╯   ╰────────────┴────────────┴────────────┴────────────┴────────────╯
+            >;
+        };
+
+        sym_layer {
+            bindings = <
+// ╭────────────┬────────────┬────────────┬────────────┬────────────╮   ╭────────────┬────────────┬────────────┬────────────┬────────────╮
+    &kp LBRC     &kp AMPS     &kp ASTRK    &kp LPAR     &kp RBRC         &trans       &trans       &trans       &trans       &trans
+// ├────────────┼────────────┼────────────┼────────────┼────────────┤   ├────────────┼────────────┼────────────┼────────────┼────────────┤
+    &kp COLON    &kp DLLR     &kp PRCNT    &kp CARET    &kp PLUS         &trans       &kp RSHFT    &kp RGUI     &kp RALT     &kp RCTRL
+// ├────────────┼────────────┼────────────┼────────────┼────────────┤   ├────────────┼────────────┼────────────┼────────────┼────────────┤
+    &kp TILDE    &kp EXCL     &kp AT       &kp HASH     &kp PIPE         &trans       &trans       &trans       &trans       &trans
+// ├────────────┼────────────┼────────────┼────────────┼────────────┤   ├────────────┼────────────┼────────────┼────────────┼────────────┤
+    &kp LPAR     &kp RPAR     &kp UNDER    &mo FUN      &trans           &trans       &trans       &trans       &trans       &trans
+// ╰────────────┴────────────┴────────────┴────────────┴────────────╯   ╰────────────┴────────────┴────────────┴────────────┴────────────╯
+            >;
+        };
+
+        fun_layer {
+            bindings = <
+// ╭────────────┬────────────┬────────────┬────────────┬────────────╮   ╭────────────┬────────────┬────────────┬────────────┬────────────╮
+    &kp F12      &kp F7       &kp F8       &kp F9       &kp PSCRN        &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_CLR   &trans
+// ├────────────┼────────────┼────────────┼────────────┼────────────┤   ├────────────┼────────────┼────────────┼────────────┼────────────┤
+    &kp F11      &kp F4       &kp F5       &kp F6       &kp SLCK         &trans       &kp RSHFT    &kp RGUI     &kp RALT     &kp RCTRL
+// ├────────────┼────────────┼────────────┼────────────┼────────────┤   ├────────────┼────────────┼────────────┼────────────┼────────────┤
+    &kp F10      &kp F1       &kp F2       &kp F3       &kp PAUSE_BREAK  &bootloader  &trans       &trans       &trans       &sys_reset
+// ├────────────┼────────────┼────────────┼────────────┼────────────┤   ├────────────┼────────────┼────────────┼────────────┼────────────┤
+    &trans       &trans       &trans       &trans       &trans           &trans       &trans       &trans       &trans       &trans
+// ╰────────────┴────────────┴────────────┴────────────┴────────────╯   ╰────────────┴────────────┴────────────┴────────────┴────────────╯
             >;
         };
     };
