@@ -19,6 +19,8 @@ jobs:
             board: promicro_nrf52840
           - shield: iurii_test
             board: promicro_nrf52840
+          - shield: iurii_test_right
+            board: promicro_nrf52840
     steps:
       - name: Checkout
         uses: actions/checkout@v4
