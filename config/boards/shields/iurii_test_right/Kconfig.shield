@@ -1,0 +1,2 @@
+config SHIELD_IURII_TEST_RIGHT
+    def_bool $(shields_list_contains,iurii_test_right)
