@@ -47,7 +47,8 @@ jobs:
         run: |
           west build -s zmk/app -b ${{ matrix.board }} -- \
             -DSHIELD=${{ matrix.shield }} \
-            -DZMK_CONFIG="${GITHUB_WORKSPACE}/config"
+            -DZMK_CONFIG="${GITHUB_WORKSPACE}/config" \
+            -DSNIPPET=zmk-studio
 
       - name: Rename firmware
         run: |

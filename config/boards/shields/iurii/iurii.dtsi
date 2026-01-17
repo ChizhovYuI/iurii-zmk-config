@@ -1,9 +1,64 @@
 #include <dt-bindings/zmk/matrix_transform.h>
+#include <physical_layouts.dtsi>
 
 / {
     chosen {
         zmk,kscan = &kscan0;
         zmk,matrix-transform = &default_transform;
+        zmk,physical-layout = &physical_layout;
+    };
+
+    physical_layout: physical_layout_0 {
+        compatible = "zmk,physical-layout";
+        display-name = "Iurii 40-key";
+        transform = <&default_transform>;
+        kscan = <&kscan0>;
+
+        keys  //                   w    h    x    y   rot  rx   ry
+            = <&key_physical_attrs 100 100    0   25    0   0    0>   // row0 col0 (Q)
+            , <&key_physical_attrs 100 100  100   12    0   0    0>   // row0 col1 (W)
+            , <&key_physical_attrs 100 100  200    0    0   0    0>   // row0 col2 (E)
+            , <&key_physical_attrs 100 100  300    5    0   0    0>   // row0 col3 (R)
+            , <&key_physical_attrs 100 100  400   15    0   0    0>   // row0 col4 (T)
+            , <&key_physical_attrs 100 100  600   15    0   0    0>   // row0 col5 (Y)
+            , <&key_physical_attrs 100 100  700    5    0   0    0>   // row0 col6 (U)
+            , <&key_physical_attrs 100 100  800    0    0   0    0>   // row0 col7 (I)
+            , <&key_physical_attrs 100 100  900   12    0   0    0>   // row0 col8 (O)
+            , <&key_physical_attrs 100 100 1000   25    0   0    0>   // row0 col9 (P)
+
+            , <&key_physical_attrs 100 100    0  125    0   0    0>   // row1 col0 (A)
+            , <&key_physical_attrs 100 100  100  112    0   0    0>   // row1 col1 (S)
+            , <&key_physical_attrs 100 100  200  100    0   0    0>   // row1 col2 (D)
+            , <&key_physical_attrs 100 100  300  105    0   0    0>   // row1 col3 (F)
+            , <&key_physical_attrs 100 100  400  115    0   0    0>   // row1 col4 (G)
+            , <&key_physical_attrs 100 100  600  115    0   0    0>   // row1 col5 (H)
+            , <&key_physical_attrs 100 100  700  105    0   0    0>   // row1 col6 (J)
+            , <&key_physical_attrs 100 100  800  100    0   0    0>   // row1 col7 (K)
+            , <&key_physical_attrs 100 100  900  112    0   0    0>   // row1 col8 (L)
+            , <&key_physical_attrs 100 100 1000  125    0   0    0>   // row1 col9 (;)
+
+            , <&key_physical_attrs 100 100    0  225    0   0    0>   // row2 col0 (Z)
+            , <&key_physical_attrs 100 100  100  212    0   0    0>   // row2 col1 (X)
+            , <&key_physical_attrs 100 100  200  200    0   0    0>   // row2 col2 (C)
+            , <&key_physical_attrs 100 100  300  205    0   0    0>   // row2 col3 (V)
+            , <&key_physical_attrs 100 100  400  215    0   0    0>   // row2 col4 (B)
+            , <&key_physical_attrs 100 100  600  215    0   0    0>   // row2 col5 (N)
+            , <&key_physical_attrs 100 100  700  205    0   0    0>   // row2 col6 (M)
+            , <&key_physical_attrs 100 100  800  200    0   0    0>   // row2 col7 (,)
+            , <&key_physical_attrs 100 100  900  212    0   0    0>   // row2 col8 (.)
+            , <&key_physical_attrs 100 100 1000  225    0   0    0>   // row2 col9 (/)
+
+            , <&key_physical_attrs 100 100  100  312    0   0    0>   // row3 left (SPC)
+            , <&key_physical_attrs 100 100  200  300    0   0    0>   // row3 left (TAB)
+            , <&key_physical_attrs 100 100  300  305    0   0    0>   // row3 left (ESC)
+            , <&key_physical_attrs 100 100  400  315    0   0    0>   // row3 left (SYM)
+            , <&key_physical_attrs 100 100    0  325    0   0    0>   // row3 left (SHFT) - col0
+            , <&key_physical_attrs 100 100  600  315    0   0    0>   // row3 right (BSPC)
+            , <&key_physical_attrs 100 100 1000  325    0   0    0>   // row3 right (RET) - col9
+            , <&key_physical_attrs 100 100  900  312    0   0    0>   // row3 right (F13) - col8
+            , <&key_physical_attrs 100 100  800  300    0   0    0>   // row3 right (SHFT) - col7
+            , <&key_physical_attrs 100 100  700  305    0   0    0>   // row3 right (CTRL) - col6
+            ;
     };
 
     default_transform: keymap_transform_0 {
@@ -19,7 +74,7 @@
             RC(0,0) RC(0,1) RC(0,2) RC(0,3) RC(0,4)    RC(0,5) RC(0,6) RC(0,7) RC(0,8) RC(0,9)
             RC(1,0) RC(1,1) RC(1,2) RC(1,3) RC(1,4)    RC(1,5) RC(1,6) RC(1,7) RC(1,8) RC(1,9)
             RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(2,4)    RC(2,5) RC(2,6) RC(2,7) RC(2,8) RC(2,9)
-            RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4)    RC(3,5) RC(3,6) RC(3,7) RC(3,8) RC(3,9)
+            RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,0)    RC(3,5) RC(3,9) RC(3,8) RC(3,7) RC(3,6)
         >;
     };
 
