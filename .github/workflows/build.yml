@@ -14,13 +14,13 @@ jobs:
       matrix:
         include:
           - shield: iurii_left
-            board: promicro_nrf52840
+            board: seeeduino_xiao_ble
           - shield: iurii_right
-            board: promicro_nrf52840
+            board: seeeduino_xiao_ble
           - shield: iurii_test
-            board: promicro_nrf52840
+            board: seeeduino_xiao_ble
           - shield: iurii_test_right
-            board: promicro_nrf52840
+            board: seeeduino_xiao_ble
     steps:
       - name: Checkout
         uses: actions/checkout@v4
