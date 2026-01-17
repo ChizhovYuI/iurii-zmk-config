@@ -1,9 +1,9 @@
 include:
-  - board: seeeduino_xiao_ble
+  - board: xiao_ble
     shield: iurii_left
-  - board: seeeduino_xiao_ble
+  - board: xiao_ble
     shield: iurii_right
-  - board: seeeduino_xiao_ble
+  - board: xiao_ble
     shield: iurii_test
-  - board: seeeduino_xiao_ble
+  - board: xiao_ble
     shield: iurii_test_right

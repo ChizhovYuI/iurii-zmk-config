@@ -14,13 +14,13 @@ jobs:
       matrix:
         include:
           - shield: iurii_left
-            board: seeeduino_xiao_ble
+            board: xiao_ble
           - shield: iurii_right
-            board: seeeduino_xiao_ble
+            board: xiao_ble
           - shield: iurii_test
-            board: seeeduino_xiao_ble
+            board: xiao_ble
           - shield: iurii_test_right
-            board: seeeduino_xiao_ble
+            board: xiao_ble
     steps:
       - name: Checkout
         uses: actions/checkout@v4
