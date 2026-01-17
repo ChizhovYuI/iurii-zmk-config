@@ -11,16 +11,25 @@ jobs:
     container:
       image: zmkfirmware/zmk-build-arm:stable
     strategy:
+      fail-fast: false
       matrix:
         include:
           - shield: iurii_left
             board: xiao_ble
+            snippet: studio-rpc-usb-uart
+            cmake-args: -DCONFIG_ZMK_STUDIO=y
           - shield: iurii_right
             board: xiao_ble
+            snippet: ""
+            cmake-args: ""
           - shield: iurii_test
             board: xiao_ble
+            snippet: studio-rpc-usb-uart
+            cmake-args: -DCONFIG_ZMK_STUDIO=y
           - shield: iurii_test_right
             board: xiao_ble
+            snippet: ""
+            cmake-args: ""
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -32,7 +41,7 @@ jobs:
             modules/
             zephyr/
             tools/
-          key: ${{ runner.os }}-west-${{ hashFiles('config/build.yaml') }}
+          key: ${{ runner.os }}-west-main-${{ hashFiles('config/west.yml') }}
 
       - name: West init
         run: west init -l config
@@ -45,9 +54,14 @@ jobs:
 
       - name: Build firmware
         run: |
-          west build -s zmk/app -b ${{ matrix.board }} -- \
+          SNIPPET_ARG=""
+          if [ -n "${{ matrix.snippet }}" ]; then
+            SNIPPET_ARG="-S ${{ matrix.snippet }}"
+          fi
+          west build -s zmk/app -b ${{ matrix.board }} $SNIPPET_ARG -- \
             -DSHIELD=${{ matrix.shield }} \
-            -DZMK_CONFIG="${GITHUB_WORKSPACE}/config"
+            -DZMK_CONFIG="${GITHUB_WORKSPACE}/config" \
+            ${{ matrix.cmake-args }}
 
       - name: Rename firmware
         run: |

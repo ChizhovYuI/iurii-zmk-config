@@ -1,9 +1,61 @@
 #include <dt-bindings/zmk/matrix_transform.h>
+#include <physical_layouts.dtsi>
 
 / {
     chosen {
         zmk,kscan = &kscan0;
         zmk,matrix-transform = &default_transform;
+        zmk,physical-layout = &physical_layout;
+    };
+
+    physical_layout: physical_layout_0 {
+        compatible = "zmk,physical-layout";
+        display-name = "Iurii 40-key";
+        transform = <&default_transform>;
+        kscan = <&kscan0>;
+
+        keys  //                   w    h    x    y   rot  rx   ry
+            = <&key_physical_attrs 100 100    0   25    0   0    0>   // Q
+            , <&key_physical_attrs 100 100  100   12    0   0    0>   // W
+            , <&key_physical_attrs 100 100  200    0    0   0    0>   // E
+            , <&key_physical_attrs 100 100  300    5    0   0    0>   // R
+            , <&key_physical_attrs 100 100  400   15    0   0    0>   // T
+            , <&key_physical_attrs 100 100  600   15    0   0    0>   // Y
+            , <&key_physical_attrs 100 100  700    5    0   0    0>   // U
+            , <&key_physical_attrs 100 100  800    0    0   0    0>   // I
+            , <&key_physical_attrs 100 100  900   12    0   0    0>   // O
+            , <&key_physical_attrs 100 100 1000   25    0   0    0>   // P
+            , <&key_physical_attrs 100 100    0  125    0   0    0>   // A
+            , <&key_physical_attrs 100 100  100  112    0   0    0>   // S
+            , <&key_physical_attrs 100 100  200  100    0   0    0>   // D
+            , <&key_physical_attrs 100 100  300  105    0   0    0>   // F
+            , <&key_physical_attrs 100 100  400  115    0   0    0>   // G
+            , <&key_physical_attrs 100 100  600  115    0   0    0>   // H
+            , <&key_physical_attrs 100 100  700  105    0   0    0>   // J
+            , <&key_physical_attrs 100 100  800  100    0   0    0>   // K
+            , <&key_physical_attrs 100 100  900  112    0   0    0>   // L
+            , <&key_physical_attrs 100 100 1000  125    0   0    0>   // ;
+            , <&key_physical_attrs 100 100    0  225    0   0    0>   // Z
+            , <&key_physical_attrs 100 100  100  212    0   0    0>   // X
+            , <&key_physical_attrs 100 100  200  200    0   0    0>   // C
+            , <&key_physical_attrs 100 100  300  205    0   0    0>   // V
+            , <&key_physical_attrs 100 100  400  215    0   0    0>   // B
+            , <&key_physical_attrs 100 100  600  215    0   0    0>   // N
+            , <&key_physical_attrs 100 100  700  205    0   0    0>   // M
+            , <&key_physical_attrs 100 100  800  200    0   0    0>   // ,
+            , <&key_physical_attrs 100 100  900  212    0   0    0>   // .
+            , <&key_physical_attrs 100 100 1000  225    0   0    0>   // /
+            , <&key_physical_attrs 100 100  100  312    0   0    0>   // SPC (col1)
+            , <&key_physical_attrs 100 100  200  300    0   0    0>   // TAB (col2)
+            , <&key_physical_attrs 100 100  300  305    0   0    0>   // ESC (col3)
+            , <&key_physical_attrs 100 100  400  315    0   0    0>   // SYM (col4)
+            , <&key_physical_attrs 100 100    0  325    0   0    0>   // SHFT (col0)
+            , <&key_physical_attrs 100 100  600  315    0   0    0>   // BSPC (col5)
+            , <&key_physical_attrs 100 100 1000  325    0   0    0>   // RET (col9)
+            , <&key_physical_attrs 100 100  900  312    0   0    0>   // F13 (col8)
+            , <&key_physical_attrs 100 100  800  300    0   0    0>   // SHFT (col7)
+            , <&key_physical_attrs 100 100  700  305    0   0    0>   // CTRL (col6)
+            ;
     };
 
     default_transform: keymap_transform_0 {

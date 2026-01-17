@@ -1,9 +1,13 @@
 include:
   - board: xiao_ble
     shield: iurii_left
+    snippet: studio-rpc-usb-uart
+    cmake-args: -DCONFIG_ZMK_STUDIO=y
   - board: xiao_ble
     shield: iurii_right
   - board: xiao_ble
     shield: iurii_test
+    snippet: studio-rpc-usb-uart
+    cmake-args: -DCONFIG_ZMK_STUDIO=y
   - board: xiao_ble
     shield: iurii_test_right
