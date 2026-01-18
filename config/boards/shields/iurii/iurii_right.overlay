@@ -6,11 +6,11 @@
 
 &kscan0 {
     col-gpios
-        = <&gpio0 2  GPIO_ACTIVE_HIGH>  // D0 = col0 (→ col5 with offset)
-        , <&gpio1 11 GPIO_ACTIVE_HIGH>  // D6 = col1 (→ col6 with offset)
-        , <&gpio0 5  GPIO_ACTIVE_HIGH>  // D5 = col2 (→ col7 with offset)
-        , <&gpio0 4  GPIO_ACTIVE_HIGH>  // D4 = col3 (→ col8 with offset)
-        , <&gpio0 3  GPIO_ACTIVE_HIGH>  // D1 = col4 (→ col9 with offset)
+        = <&gpio1 11 GPIO_ACTIVE_HIGH>  // D6 = col0 (→ col5 with offset)
+        , <&gpio0 5  GPIO_ACTIVE_HIGH>  // D5 = col1 (→ col6 with offset)
+        , <&gpio0 4  GPIO_ACTIVE_HIGH>  // D4 = col2 (→ col7 with offset)
+        , <&gpio0 3  GPIO_ACTIVE_HIGH>  // D1 = col3 (→ col8 with offset)
+        , <&gpio0 2  GPIO_ACTIVE_HIGH>  // D0 = col4 (→ col9 with offset)
         ;
 
     row-gpios
