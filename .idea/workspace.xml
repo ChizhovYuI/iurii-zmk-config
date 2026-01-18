@@ -4,17 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdb3d8b3-8a56-479f-8b70-9eaa1c272162" name="Changes" comment="feat: Add .gitignore to exclude default and editor-specific files">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/copilot.data.migration.ask2agent.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/iurii-zmk-config.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+    <list default="true" id="cdb3d8b3-8a56-479f-8b70-9eaa1c272162" name="Changes" comment="feat: Add project configuration files for Python SDK and inspection settings">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/boards/shields/iurii/iurii.dtsi" beforeDir="false" afterPath="$PROJECT_DIR$/config/boards/shields/iurii/iurii.dtsi" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +80,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1768725083137</updated>
-      <workItem from="1768725084222" duration="1229000" />
+      <workItem from="1768725084222" duration="1868000" />
     </task>
     <task id="LOCAL-00001" summary="feat: Add .gitignore to exclude default and editor-specific files">
       <option name="closed" value="true" />
@@ -106,7 +98,23 @@
       <option name="project" value="LOCAL" />
       <updated>1768726155779</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="feat: Add .idea to .gitignore to exclude IDE-specific files">
+      <option name="closed" value="true" />
+      <created>1768726328875</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1768726328875</updated>
+    </task>
+    <task id="LOCAL-00004" summary="feat: Add project configuration files for Python SDK and inspection settings">
+      <option name="closed" value="true" />
+      <created>1768726402778</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1768726402778</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -125,7 +133,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat: Add .gitignore to exclude default and editor-specific files" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Add .gitignore to exclude default and editor-specific files" />
+    <MESSAGE value="feat: Add .idea to .gitignore to exclude IDE-specific files" />
+    <MESSAGE value="feat: Add project configuration files for Python SDK and inspection settings" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Add project configuration files for Python SDK and inspection settings" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

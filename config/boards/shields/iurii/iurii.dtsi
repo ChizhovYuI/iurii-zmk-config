@@ -44,16 +44,16 @@
             , <&key_physical_attrs 100 100  800  200    0   0    0>   // ,
             , <&key_physical_attrs 100 100  900  212    0   0    0>   // .
             , <&key_physical_attrs 100 100 1000  225    0   0    0>   // /
-            , <&key_physical_attrs 100 100    0  312    0   0    0>   // SPC (col1)
-            , <&key_physical_attrs 100 100  100  300    0   0    0>   // TAB (col2)
-            , <&key_physical_attrs 100 100  200  305    0   0    0>   // ESC (col3)
-            , <&key_physical_attrs 100 100  300  315    0   0    0>   // SYM (col4)
-            , <&key_physical_attrs 100 100  400  325    0   0    0>   // SHFT (col0)
-            , <&key_physical_attrs 100 100  600  330    0   0    0>   // RET (col9)
-            , <&key_physical_attrs 100 100  700  330    0   0    0>   // F13 (col5)
-            , <&key_physical_attrs 100 100  800  330    0   0    0>   // SHFT (col6)
-            , <&key_physical_attrs 100 100  900  330    0   0    0>   // CTRL (col7)
-            , <&key_physical_attrs 100 100 1000  330    0   0    0>   // BSPC (col8)
+            , <&key_physical_attrs 100 100  100  300    0   0    0>   // SPC (col1)
+            , <&key_physical_attrs 100 100  200  305    0   0    0>   // TAB (col2)
+            , <&key_physical_attrs 100 100  300  320    0   0    0>   // ESC (col3)
+            , <&key_physical_attrs 100 100  400  330    0   0    0>   // SYM (col4)
+            , <&key_physical_attrs 100 100  500  340    0   0    0>   // SHFT (col0)
+            , <&key_physical_attrs 100 100  700  300    0   0    0>   // RET (col9)
+            , <&key_physical_attrs 100 100  800  305    0   0    0>   // F13 (col5)
+            , <&key_physical_attrs 100 100  900  320    0   0    0>   // SHFT (col6)
+            , <&key_physical_attrs 100 100 1000  330    0   0    0>   // CTRL (col7)
+            , <&key_physical_attrs 100 100 1100  340    0   0    0>   // BSPC (col8)
             ;
     };
 
